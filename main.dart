@@ -3,6 +3,7 @@ import 'exceptions/bank_controller_excpetions.dart';
 import 'models/account.dart';
 
 // Adicionei um comentário
+// Mais um comentário para testar o git
 void main(List<String> args) {
   BankController bankController = BankController();
 
