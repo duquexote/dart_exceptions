@@ -2,6 +2,7 @@ import 'controllers/bank_controller.dart';
 import 'exceptions/bank_controller_excpetions.dart';
 import 'models/account.dart';
 
+// Adicionei um comentário
 void main(List<String> args) {
   BankController bankController = BankController();
 
