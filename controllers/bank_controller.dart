@@ -8,18 +8,22 @@ class BankController {
     _database[id] = account;
   }
 
+  // Faz a transferencia de dinheiro de uma conta para outra
   bool makeTransfer(
       {required String idSender,
       required String idReceiver,
       required double amount}) {
+    
+    // Verifica se existe o ID do remetente
     if (!verifyId(idSender)) {
       throw SenderIdInvalidException(idSender: idSender);
     }
 
+    // Verifica se existe o ID do destinatário
     if (!verifyId(idReceiver)) {
       throw ReceiverIdInvalidException(idReceiver: idReceiver);
     }
-
+    
     Account accountSender = _database[idSender]!;
     Account accountReceiver = _database[idReceiver]!;
 
