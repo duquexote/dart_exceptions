@@ -8,23 +8,27 @@ import 'models/account.dart';
 // Mais um comentário para testar o git
 
 void testingNullSafety() {
-  Account? myAccount;
+  Account? myAccount =
+      Account(name: "Duque", balance: 20, isAuthenticated: true);
 
   // Simulando uma conexão externa
-
   Random rng = Random();
   int randomNumber = rng.nextInt(10);
   print(randomNumber);
   if (randomNumber <= 5) {
-    myAccount = Account(name: "Duque", balance: 20, isAuthenticated: true);
+    myAccount.createdAt = DateTime.now();
   }
 
   print(myAccount.runtimeType);
 
+  // Teste forçado que não funciona
   // print(myAccount.balance);
+  // print(myAccount.createdAt);
+  // print(myAccount.createdAt.day); // Não consigo fazer porque é null
 
   // Usar essa solução não torna o código seguro
   // print(myAccount!.balance);
+  // print(myAccount.createdAt!.day);
 
   // Torna o código mais seguro com essa solução
   //if (myAccount != null) {
@@ -37,7 +41,7 @@ void testingNullSafety() {
   // print(myAccount != null ? myAccount.balance : "Conta nula");
 
   // "?" Chamado de safecall, é uma resolução mais curta ainda
-  print(myAccount?.balance);
+  // print(myAccount?.balance);
 }
 
 void main(List<String> args) {
