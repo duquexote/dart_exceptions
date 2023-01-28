@@ -1,10 +1,48 @@
+import 'dart:math';
+
 import 'controllers/bank_controller.dart';
 import 'exceptions/bank_controller_excpetions.dart';
 import 'models/account.dart';
 
 // Adicionei um comentário
 // Mais um comentário para testar o git
+
+void testingNullSafety() {
+  Account? myAccount;
+
+  // Simulando uma conexão externa
+
+  Random rng = Random();
+  int randomNumber = rng.nextInt(10);
+  print(randomNumber);
+  if (randomNumber <= 5) {
+    myAccount = Account(name: "Duque", balance: 20, isAuthenticated: true);
+  }
+
+  print(myAccount.runtimeType);
+
+  // print(myAccount.balance);
+
+  // Usar essa solução não torna o código seguro
+  // print(myAccount!.balance);
+
+  // Torna o código mais seguro com essa solução
+  //if (myAccount != null) {
+  //  print(myAccount.balance);
+  //} else {
+  //  print("Conta nula");
+  //}
+
+  // Usando o operador ternário torna a resolução curta
+  // print(myAccount != null ? myAccount.balance : "Conta nula");
+
+  // "?" Chamado de safecall, é uma resolução mais curta ainda
+  print(myAccount?.balance);
+}
+
 void main(List<String> args) {
+  testingNullSafety();
+
   BankController bankController = BankController();
 
   bankController.addAccount(
